@@ -30,6 +30,6 @@ bool King::canMove(const int& target_row, const int& target_col, const std::vect
     int abs_dx = std::abs(getRow() - target_row);
     int abs_dy = std::abs(getColumn() - target_col);
 
-    //should move 1 space
-    return abs_dx == 1 && abs_dy == 1;
+    //should move 1 space in any direction 10, 01, 11
+    return (abs_dx <= 1 && abs_dy <= 1);
 }
