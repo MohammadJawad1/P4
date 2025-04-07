@@ -17,3 +17,15 @@ Bishop::Bishop(const std::string& color, const int& row, const int& col, const b
     : ChessPiece(color, row, col, movingUp, 3, "BISHOP") {}
 
 // YOUR CODE HERE
+bool Bishop::canMove(const int& target_row, const int& target_col, const std::vector<std::vector<ChessPiece*>>& board) const 
+{
+    // Not on the board 
+    if (getRow() == -1 || getColumn() == -1) { return false; } 
+    // Out of bounds target
+    if (target_row < 0 || target_row >= BOARD_LENGTH || target_col < 0 || target_col >= BOARD_LENGTH) { return false; };
+
+    ChessPiece* target_piece = board[target_row][target_col];
+    if (target_piece && target_piece->getColor() == getColor()) { return false; }
+
+    return false;
+}

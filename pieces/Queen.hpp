@@ -26,4 +26,5 @@ public:
     Queen(const std::string& color, const int& row = -1, const int& col = -1, const bool& movingUp = false);
 
     // YOUR CODE HERE 
+    bool canMove(const int& target_row, const int& target_col, const std::vector<std::vector<ChessPiece*>>& board) const ;
 };
