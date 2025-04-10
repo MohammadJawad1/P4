@@ -45,7 +45,9 @@ bool Bishop::canMove(const int& target_row, const int& target_col, const std::ve
     if (target_row < 0 || target_row >= BOARD_LENGTH || target_col < 0 || target_col >= BOARD_LENGTH) { return false; };
 
     ChessPiece* target_piece = board[target_row][target_col];
-    if (target_piece && target_piece->getColor() == getColor()) { return false; }
+    if (target_piece) {
+        if (target_piece->getColor() == getColor()) { return false; } 
+    }
 
     // Get the difference between the current position and the target position
     int row_difference = target_row - getRow(); 
@@ -77,4 +79,6 @@ bool Bishop::canMove(const int& target_row, const int& target_col, const std::ve
     }
 
     return true;
+
+    
 }
