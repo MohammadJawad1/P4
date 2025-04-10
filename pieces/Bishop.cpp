@@ -62,11 +62,11 @@ bool Bishop::canMove(const int& target_row, const int& target_col, const std::ve
     // Find what direction we should step
     int increment_row = 0;
     int increment_col = 0;
-    if (row_difference > 0) { increment_row = 1; }  // Moving up
-    if (row_difference < 0) { increment_row = -1; } // Moving down
+    if (row_difference > 0) { increment_row = 1; }  // Moving right
+    if (row_difference < 0) { increment_row = -1; } // Moving left
 
-    if (col_difference > 0) { increment_col = 1; }  // Moving right
-    if (col_difference < 0) { increment_col = -1; } // Moving left
+    if (col_difference > 0) { increment_col = 1; }  // Moving up
+    if (col_difference < 0) { increment_col = -1; } // Moving down
 
     // Iterate from the original space to target space and check if there is any obstructing Chess Piece
     int temp_row = getRow();
