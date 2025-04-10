@@ -34,7 +34,7 @@ bool Bishop::canMove(const int& target_row, const int& target_col, const std::ve
 
     // Same cell OR not a diagonal line
     bool stays_in_same_position = (row_difference == 0) && (col_difference == 0);
-    bool moves_diagonal = (row_difference == col_difference);
+    bool moves_diagonal = (std::abs(row_difference) == std::abs(col_difference));;
     if (stays_in_same_position || !moves_diagonal) { return false; }
 
     // Find what direction we should step
