@@ -44,11 +44,6 @@ bool Queen::canMove(const int& target_row, const int& target_col, const std::vec
     // Out of bounds target
     if (target_row < 0 || target_row >= BOARD_LENGTH || target_col < 0 || target_col >= BOARD_LENGTH) { return false; };
 
-    ChessPiece* target_piece = board[target_row][target_col];
-    if (target_piece) {
-        if (target_piece->getColor() == getColor()) { return false; } 
-    }
-
     // Get the difference between the current position and the target position
     int row_difference = target_row - getRow(); 
     // -,0,+  -->  represents down, no movement, up
@@ -74,10 +69,12 @@ bool Queen::canMove(const int& target_row, const int& target_col, const std::vec
     int temp_col = getColumn();
 
     while (temp_row != target_row || temp_col != target_col) {
+        if (board[temp_row][temp_col]) return false;
         temp_row += increment_row;
         temp_col += increment_col;
-        if (board[temp_row][temp_col]) { return false; }
     }
+    ChessPiece* target_piece = board[target_row][target_col];
+    return (target_piece == nullptr || target_piece->getColor() != getColor());
 
     return true;
 
