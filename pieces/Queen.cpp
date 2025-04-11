@@ -76,6 +76,4 @@ bool Queen::canMove(const int& target_row, const int& target_col, const std::vec
     ChessPiece* target_piece = board[target_row][target_col];
     return (target_piece == nullptr || target_piece->getColor() != getColor());
 
-    return true;
-
 }
