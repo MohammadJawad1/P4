@@ -51,22 +51,21 @@ bool Bishop::canMove(const int& target_row, const int& target_col, const std::ve
 
     // Get the difference between the current position and the target position
     int row_difference = target_row - getRow(); 
-    // -,0,+  -->  represents down, no movement, up
     int col_difference = target_col - getColumn(); 
 
     // Same cell OR not a diagonal line
     bool stays_in_same_position = (row_difference == 0) && (col_difference == 0);
-    bool moves_diagonal = (std::abs(row_difference) == std::abs(col_difference));
+    bool moves_diagonal = std::abs(row_difference) == std::abs(col_difference);
     if (stays_in_same_position || !moves_diagonal) { return false; }
 
     // Find what direction we should step
     int increment_row = 0;
     int increment_col = 0;
-    if (row_difference > 0) { increment_row = 1; }  // Moving right
-    if (row_difference < 0) { increment_row = -1; } // Moving left
+    if (row_difference > 0) { increment_row = 1; }  
+    if (row_difference < 0) { increment_row = -1; } 
 
-    if (col_difference > 0) { increment_col = 1; }  // Moving up
-    if (col_difference < 0) { increment_col = -1; } // Moving down
+    if (col_difference > 0) { increment_col = 1; } 
+    if (col_difference < 0) { increment_col = -1; } 
 
     // Iterate from the original space to target space and check if there is any obstructing Chess Piece
     int temp_row = getRow();
