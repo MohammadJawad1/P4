@@ -42,7 +42,7 @@ bool Queen::canMove(const int& target_row, const int& target_col, const std::vec
     // Not on the board 
     if (getRow() == -1 || getColumn() == -1) { return false; } 
     // Out of bounds target
-    if (target_row < 0 || target_row >= BOARD_LENGTH || target_col < 0 || target_col >= BOARD_LENGTH) { return false; };
+    if (target_row < 0 || target_row >= BOARD_LENGTH || target_col < 0 || target_col >= BOARD_LENGTH) { return false; }
 
     // Get the difference between the current position and the target position
     int row_difference = target_row - getRow(); 
@@ -51,7 +51,7 @@ bool Queen::canMove(const int& target_row, const int& target_col, const std::vec
 
     // Same cell OR not a diagonal line
     bool stays_in_same_position = (row_difference == 0) && (col_difference == 0);
-    bool moves_diagonal = (std::abs(row_difference) == std::abs(col_difference));
+    bool moves_diagonal = std::abs(row_difference) == std::abs(col_difference);
     bool moves_straight = (row_difference == 0) || (col_difference == 0);
     if (stays_in_same_position || !(moves_diagonal || moves_straight)) { return false; }
 
@@ -69,10 +69,12 @@ bool Queen::canMove(const int& target_row, const int& target_col, const std::vec
     int temp_col = getColumn();
 
     while (temp_row != target_row || temp_col != target_col) {
-        if (board[temp_row][temp_col]) return false;
+        if (board[temp_row][temp_col] != nullptr) return false;
         temp_row += increment_row;
         temp_col += increment_col;
     }
+
+    // Final square: must be empty or contain opponent
     ChessPiece* target_piece = board[target_row][target_col];
     return (target_piece == nullptr || target_piece->getColor() != getColor());
 
