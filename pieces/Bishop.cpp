@@ -77,7 +77,5 @@ bool Bishop::canMove(const int& target_row, const int& target_col, const std::ve
         if (board[temp_row][temp_col]) { return false; }
     }
 
-    return true;
-
-    
+    return (target_piece == nullptr || target_piece->getColor() != getColor());
 }
