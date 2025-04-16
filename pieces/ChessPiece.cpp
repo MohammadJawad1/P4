@@ -1,3 +1,6 @@
+//Mohammad Jawad
+//4/15/2025
+//Makes a virtual ChessPiece class that will be inherited by all the pieces
 #include "ChessPiece.hpp"
 
 /**

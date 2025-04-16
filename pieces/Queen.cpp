@@ -1,3 +1,7 @@
+//Mohammad Jawad
+//4/15/2025
+//Determines whether the Queen can move to the specified target position on the board.
+
 #include "Queen.hpp"
 
 /**

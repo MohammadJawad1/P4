@@ -1,3 +1,8 @@
+//Mohammad Jawad
+//4/15/2025
+//Determines whether the Bishop can move to the specified target position on the board.
+
+
 #include "Bishop.hpp"
 
 /**
@@ -73,6 +78,4 @@ bool Bishop::canMove(const int& target_row, const int& target_col, const std::ve
     }
     ChessPiece* target_piece = board[target_row][target_col];
     return (target_piece == nullptr || target_piece->getColor() != getColor());
-
-    return true;
 }
